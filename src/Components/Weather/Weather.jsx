@@ -41,18 +41,19 @@ export default class Weather extends Component {
           });
 
         }, 500);
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&lon=${this.state.long}&appid=dad37189181736026d4a384bec214558`)
+          axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&lon=${this.state.long}&appid=19ce26b4681f8e75c3a7bc61f3934e16`)
         .then((res) => {
-            console.log(res.data.name);
-            this.setState({
-              // city: res.data.name,
-              Data:res.data
-            })
-            console.log(this.state.city)
+          this.setState({
+            city: res.data.name,
+            Data: res.data
+          })
+          // console.log("data is " + res.data.main);
+          // console.log(this.state.city)
+          // console.log("Weather data is : " + this.state.Data.feels_like)
           }).catch((error)=>{
               console.log(error);
             })
-            console.log(this.state.lat);
+            // console.log(this.state.lat);
           },
           (error)=>{
             console.log("error " + error);
@@ -67,7 +68,8 @@ export default class Weather extends Component {
     return (
         <div className='ps-3 pe-3 mt-5 mb-5'>
         <Search lat={this.state.lat} long={this.state.long} city={this.state.city} data={this.state.Data} coordinates={this.coordinates} change={this.changeHandler} />
-        <Result weatherdata={this.state.Data} />
+        {this.state.Data ? <Result data={this.state.Data} /> : ""}
+       
       </div>
     )
   }
