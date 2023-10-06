@@ -1,0 +1,10 @@
+.navlink{
+    text-decoration: none;
+    color: black;
+}
+.navlink{
+    margin-right: 15px !important;
+}
+.navlink:hover{
+    color: skyblue;
+}
